@@ -123,7 +123,11 @@ class Mlflow extends DataBricks {
 	
 	constructor(args) {
 		super(args)
-		this.path = 'preview/mlflow'
+		this.mlpath = 'preview/mlflow'
+	}
+	
+	requestUrl(path) {
+		return `https://${this.domain}/api/${this.version}/${this.mlpath}/${this.path||''}${path}`
 	}
 	
 	get Experiment() {
@@ -140,7 +144,7 @@ class Experiment extends Mlflow {
 	
 	constructor(args) {
 		super(args)
-		this.path = 'preview/mlflow/experiments'
+		this.path = 'experiments'
 	}
 	
 	get({experiment_id}) {
@@ -153,7 +157,7 @@ class MlflowRuns extends Mlflow {
 	
 	constructor(args) {
 		super(args)
-		this.path = 'preview/mlflow/runs'
+		this.path = 'runs'
 	}
 	
 	search({experiment_ids, ...param}) {
