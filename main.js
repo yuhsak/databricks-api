@@ -76,3 +76,5 @@ class Runs extends DataBricks {
 	}
 	
 }
+
+module.exports = DataBricks
