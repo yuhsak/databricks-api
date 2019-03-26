@@ -48,6 +48,6 @@ const {
 
 ```
 
-All version 2.0 api is implemented.  
+All interfaces provided on DataBricks API v2.0 are implemented.  
 
 [https://docs.databricks.com/api/index.html](https://docs.databricks.com/api/index.html)
