@@ -1,9 +1,7 @@
 # databricks-api
 Simple client for databricks rest api for nodejs
 
-## API
-
-### Usage
+## Usage
 
 ```sh
 npm install databricks-api
