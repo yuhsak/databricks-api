@@ -3,7 +3,7 @@ Simple client for databricks rest api for nodejs
 
 ## Usage
 
-```sh
+```bash
 npm install databricks-api
 ```
 
