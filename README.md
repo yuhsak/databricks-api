@@ -40,7 +40,7 @@ const {
 	const {job_id} = jobList.jobs[0]
 	const res = await Jobs.runNow({job_id})
 	const {run_id} = res
-	const output = Runs.getOutput({run_id})
+	const output = await Runs.getOutput({run_id})
 	
 	console.log(output)
 	
