@@ -1,5 +1,5 @@
 # databricks-api
-Simple client for databricks rest api for nodejs
+Simple databricks rest api client for node.js
 
 ## Usage
 
