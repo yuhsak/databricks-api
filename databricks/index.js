@@ -1,5 +1,6 @@
 const qs = require('querystring')
 const fetch = require('isomorphic-unfetch')
+const MLflow = require('mlflow')
 
 module.exports = class DataBricks {
 	
@@ -31,7 +32,16 @@ module.exports = class DataBricks {
 		})()
 		
 		try {
-			return (await promise.then(r => r.json()))
+			const r = await promise.then(async r => {
+				const {status, statusText} = r
+				const data = await r.json().catch(() => null)
+				if(status == 200){
+					return data
+				} else {
+					throw new Error(JSON.stringify({status, statusText, data}))
+				}
+			})
+			return r
 		} catch(T_T) {
 			throw new Error(T_T)
 		}	
@@ -77,8 +87,8 @@ module.exports = class DataBricks {
 		return new Workspace({domain: this.domain, version: this.version, token: this.token})
 	}
 	
-	get Mlflow() {
-		return new Mlflow({domain: this.domain, version: this.version, token: this.token})
+	get MLflow() {
+		return new MLflow({endpoint: `https://${this.domain}`, version: this.version, headers: {'Authorization': `Bearer ${this.token}`}})
 	}
 	
 }
@@ -93,4 +103,3 @@ const Libraries = require('./libraries')
 const SCIM = require('./scim')
 const Secrets = require('./secrets')
 const Workspace = require('./workspace')
-const Mlflow = require('../mlflow/index')
