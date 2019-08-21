@@ -1,10 +1,10 @@
-const DataBricks = require('./index')
+import {DataBricksBase, ConstructorProps} from './index'
 
-module.exports = class Secrets extends DataBricks {
+export default class Secrets extends DataBricksBase {
 	
-	constructor(args) {
+	constructor(args: ConstructorProps) {
 		super(args)
-		this.path = 'secrets'
+		this.path = '/secrets'
 	}
 	
 	createScope({scope, ...param}) {

@@ -1,1 +1,1 @@
-module.exports = require('./databricks/index')
+module.exports = require('./lib/index').default

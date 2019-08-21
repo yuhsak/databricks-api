@@ -1,10 +1,10 @@
-const DataBricks = require('./index')
+import {DataBricksBase, ConstructorProps} from './index'
 
-module.exports = class SCIM extends DataBricks {
+export default class SCIM extends DataBricksBase {
 	
-	constructor(args) {
+	constructor(args: ConstructorProps) {
 		super(args)
-		this.parh = 'preview/scim/v2'
+		this.parh = '/preview/scim/v2'
 		this.contentType = 'application/scim+json'
 		this.accept = 'application/scim+json'
 	}
