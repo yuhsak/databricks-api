@@ -41,14 +41,14 @@ export type ViewItem = {
 	type: ViewType
 }
 
-export type ParamPair = {
-	key: string,
-	value: string
-}
-
 export type ClusterInstance = {
 	cluster_id?: string,
 	spark_context_id?: string
+}
+
+export type ParamPair = {
+	key: string,
+	value: string
 }
 
 export type Run = {
@@ -88,9 +88,20 @@ export type NotebookOutput = {
 
 export default class Runs extends DataBricksBase {
 	
+	RunLifecycleState: typeof RunLifeCycleState
+	RunResultState: typeof RunResultState
+	TriggerType: typeof TriggerType
+	ViewType: typeof ViewType
+	ViewsToExport: typeof ViewsToExport
+
 	constructor(args: ConstructorProps) {
 		super(args)
 		this.path = '/jobs/runs'
+		this.RunLifecycleState = RunLifeCycleState
+		this.RunResultState = RunResultState
+		this.TriggerType = TriggerType
+		this.ViewType = ViewType
+		this.ViewsToExport = ViewsToExport
 	}
 	
 	submit(param: 

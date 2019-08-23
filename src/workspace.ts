@@ -20,7 +20,7 @@ export enum ObjectType {
 	LIBRARY = 'LIBRARY'
 }
 
-export interface ObjectInfo {
+export type ObjectInfo = {
 	object_type: ObjectType,
 	path: string,
 	language?: Language

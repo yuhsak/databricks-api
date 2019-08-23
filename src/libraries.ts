@@ -41,9 +41,12 @@ export type RCranLibrary = {
 
 export default class Libraries extends DataBricksBase {
 	
+	LibraryInstallStatus: typeof LibraryInstallStatus
+
 	constructor(args: ConstructorProps) {
 		super(args)
 		this.path = '/libraries'
+		this.LibraryInstallStatus = LibraryInstallStatus
 	}
 	
 	allClustersStatuses(): Promise<{statuses: ClusterLibraryStatuses[]}> {

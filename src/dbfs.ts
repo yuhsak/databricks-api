@@ -1,6 +1,6 @@
 import {DataBricksBase, ConstructorProps} from './index'
 
-export interface FileInfo {
+export type FileInfo = {
 	path: string,
 	is_dir: boolean,
 	file_size: number

@@ -103,12 +103,12 @@ export enum ClusterCloudProviderNodeStatus {
 	NotAvailableInRegion = 'NotAvailableInRegion'
 }
 
-export interface AutoScale {
+export type AutoScale = {
 	min_workers: number,
 	max_workers: number
 }
 
-export interface ClusterAttributes {
+export type ClusterAttributes = {
 	cluster_name?: string,
 	spark_version: string,
 	spark_conf?: SparkConfPair,
@@ -128,7 +128,7 @@ export interface ClusterAttributes {
 
 export type ClusterSize = {num_workers: number} | {autoscale: AutoScale}
 
-export type ClusterInfo = ClusterAttributes & ClusterSize & {
+export type ClusterInfo = ClusterSize & ClusterAttributes &  {
 	cluster_id: string,
 	creator_user_name: string,
 	driver: SparkNode,
@@ -148,14 +148,14 @@ export type ClusterInfo = ClusterAttributes & ClusterSize & {
 	termination_reason: S3StorageInfo
 }
 
-export interface ClusterEvent {
+export type ClusterEvent = {
 	cluster_id: string,
 	timestamp: number,
 	type: ClusterEventType,
 	details: AwsAttributes
 }
 
-export interface AwsAttributes {
+export type AwsAttributes = {
 	first_on_demand: number,
 	availability: AwsAvailability,
 	zone_id: string,
@@ -166,7 +166,7 @@ export interface AwsAttributes {
 	ebs_volume_size: number
 }
 
-export interface EventDetails {
+export type EventDetails = {
 	current_num_workers: number,
 	target_num_workers: number,
 	previous_attributes: ClusterAttributes,
@@ -180,23 +180,24 @@ export interface EventDetails {
 
 export type ClusterLogConf = {dbfs: DbfsStorageInfo} | {s3: S3StorageInfo}
 
+// This probably a type in official doc
 export type InitScriptInfo = {dbfs: DbfsStorageInfo} | {s3: S3StorageInfo}
 
-export interface ClusterTag {
+export type ClusterTag = {
 	key: string,
 	value: string
 }
 
-export interface DbfsStorageInfo {
+export type DbfsStorageInfo = {
 	destination: string
 }
 
-export interface LogSyncStatus {
+export type LogSyncStatus = {
 	last_attempted: number,
 	last_exception: number
 }
 
-export interface NodeType {
+export type NodeType = {
 	node_type_id: string,
 	memory_mb: number,
 	num_cores: number,
@@ -206,28 +207,28 @@ export interface NodeType {
 	node_info: ClusterCloudProviderNodeInfo
 }
 
-export interface ClusterCloudProviderNodeInfo {
+export type ClusterCloudProviderNodeInfo = {
 	status: ClusterCloudProviderNodeStatus,
 	available_core_quota: number,
 	total_core_quota: number
 }
 
-export interface ParameterPair {
+export type ParameterPair = {
 	key: TerminationParameter,
 	value: string
 }
 
-export interface SparkConfPair {
+export type SparkConfPair = {
 	key: string,
 	value: string
 }
 
-export interface SparkEnvPair {
+export type SparkEnvPair = {
 	key: string,
 	value: string
 }
 
-export interface SparkNode {
+export type SparkNode = {
 	private_ip: string,
 	public_dns: string,
 	node_id: string,
@@ -237,12 +238,12 @@ export interface SparkNode {
 	host_private_ip: string
 }
 
-export interface SparkVersion {
+export type SparkVersion = {
 	key: string,
 	name: string
 }
 
-export interface S3StorageInfo {
+export type S3StorageInfo = {
 	destination: string,
 	region: string,
 	endpoint: string,
@@ -252,16 +253,16 @@ export interface S3StorageInfo {
 	canned_acl: string
 }
 
-export interface SparkNodeAwsAttributes {
+export type SparkNodeAwsAttributes = {
 	is_spot: boolean
 }
 
-export interface TerminationReason {
+export type TerminationReason = {
 	code: TerminationCode,
 	parameters: ParameterPair[]
 }
 
-export interface EventsRequest {
+export type EventsRequest = {
 	cluster_id: string,
 	start_time?: number,
 	end_time?: number,

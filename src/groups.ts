@@ -1,12 +1,9 @@
 import {DataBricksBase, ConstructorProps} from './index'
 
-export interface PrincipalName {
-	user_name?: string,
-	group_name?: string
-}
+export type PrincipalName = { user_name: string } | { group_name: string }
 
 export default class Groups extends DataBricksBase {
-	
+
 	constructor(args: ConstructorProps) {
 		super(args)
 		this.path = '/groups'
