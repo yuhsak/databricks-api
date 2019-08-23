@@ -1,6 +1,7 @@
 import qs from 'querystring'
 import fetch from 'isomorphic-unfetch'
 import MLflow from 'mlflow'
+import MLflowEnum from 'mlflow/enum'
 
 export interface ConstructorProps {
 	domain: string,
@@ -13,8 +14,8 @@ export class DataBricksBase {
 	domain: string
 	token: string
 	version: string
-	protected contentType: string
-	protected accept: string
+	contentType: string
+	accept: string
 	protected path: string
 
 	constructor({domain, token, version='2.0'}:ConstructorProps){
@@ -30,7 +31,7 @@ export class DataBricksBase {
 		return `https://${this.domain}/api/${this.version}${this.path}${path}`
 	}
 	
-	protected async req(method: string, path: string, param?: any){
+	public async req(method: string, path: string, param?: any){
 		const url = this.requestUrl(path)
 		const headers = {'Authorization': `Bearer ${this.token}`, 'Accept': this.accept}
 		
@@ -64,7 +65,7 @@ export class DataBricksBase {
 }
 
 export default class DataBricks extends DataBricksBase {
-	
+
 	get Clusters() {
 		return new Clusters({domain: this.domain, version: this.version, token: this.token})
 	}
@@ -110,7 +111,7 @@ export default class DataBricks extends DataBricksBase {
 	}
 	
 	get MLflow() {
-		return new MLflow({endpoint: `https://${this.domain}`, version: this.version, headers: {'Authorization': `Bearer ${this.token}`}})
+		return Object.assign(new MLflow({endpoint: `https://${this.domain}`, version: this.version, headers: {'Authorization': `Bearer ${this.token}`}}), MLflowEnum)
 	}
 	
 }

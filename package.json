@@ -1,6 +1,6 @@
 {
   "name": "databricks-api",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Simple client for databricks rest api",
   "main": "main.js",
   "types": "lib/index.d.ts",
