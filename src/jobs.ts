@@ -49,7 +49,7 @@ export type Job = {
 	created_time: number
 }
 
-export type JobSettings = ({existing_cluster_id: string}|NewCluster)&JobTask&{
+export type JobSettings = ({existing_cluster_id: string}|{new_cluster: NewCluster})&JobTask&{
 	name?: string,
 	libraries?: Library[],
 	email_notifications?: JobEmailNotifications,
