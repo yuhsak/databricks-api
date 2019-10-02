@@ -54,7 +54,7 @@ export type JobSettings = ({existing_cluster_id: string}|{new_cluster: NewCluste
 	libraries?: Library[],
 	email_notifications?: JobEmailNotifications,
 	timeout_seconds?: number,
-	mex_retries?: number,
+	max_retries?: number,
 	min_retry_interval_millis?: number,
 	retry_on_timeout?: boolean,
 	schedule?: CronSchedule,
