@@ -29,7 +29,6 @@ const {
 const {
 	Experiments,
 	Runs: MlRuns,
-	Params,
 	Metrics,
 	Artifacts
 } = Mlflow
