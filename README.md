@@ -1,5 +1,5 @@
 # databricks-api
-Simple databricks rest api client for node.js
+Simple databricks rest api client for node.js (written in TypeScript)
 
 ## Usage
 
